@@ -36,7 +36,8 @@ function searchForBooks(request, response) {
 
   superagent.get(url)
     .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
-    .then(results => response.render('pages/searches/show', {searchResults: results}));
+    .then(results => response.render('pages/searches/show', {searchResults: results}))
+    .catch(results => response.render('pages/searches/error'));
 }
 
 //Constructor Function
