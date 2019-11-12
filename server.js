@@ -43,7 +43,7 @@ function searchForBooks(request, response) {
 function Book(bookObj) {
   const placeholderImage = 'http://placehold.it/300x300';
   this.title = bookObj.title || 'No book title found';
-  this.author = bookObj.author || 'No author';
+  this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
 }
 

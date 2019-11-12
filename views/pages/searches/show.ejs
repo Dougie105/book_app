@@ -6,10 +6,10 @@
   <title>Book List</title>
 </head>
 <body>
-  <% bookObj.forEach( book => { %>
-    <p>Title: <%= bookObj.title %></p>
-    <p>Author: <%= bookObj.author %></p>
-    <p>Description: <%= bookObj.discription %></p>
-  });
+  <% searchResults.forEach( book => { %>
+    <p>Title: <%= book.title %></p>
+    <p>Author: <%= book.authors %></p>
+    <p>Description: <%= book.description %></p>
+    <% }); %>
 </body>
 </html>
