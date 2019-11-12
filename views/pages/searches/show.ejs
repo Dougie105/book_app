@@ -14,7 +14,7 @@
 </head>
 <body>
   <% searchResults.forEach( book => { %>
-    <img src="<%book.placeholderImage%>" alt="Placeholder"> <br>
+    <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
     <p><%= book.title %></p> <br>
     <p><%= book.authors %></p> <br>
     <p>Description: <%= book.description %></p>
