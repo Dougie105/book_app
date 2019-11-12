@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Book App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Search for books:</h1>
+  <form action="/searches" method="post">
+    <input type="text" name="search" placeholder="Enter a book title">
+    
+    <fieldset>
+      <label for="title">
+        <span>Title:</span>
+        <input type="radio" name="search" value="title">
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <label for="author">
+        <span>Author:</span>
+        <input type="radio" name="search" value="author">
+      </label>
+    </fieldset>
+
+    <button type="submit">Search for Google Books!</button>
+  </form>
+</body>
+</html>
