@@ -3,7 +3,7 @@ html{
 }
 
 body{
-    background-color: darkgrey;
+    background-color: rgb(83, 83, 83);
   }
 
   title-author{
@@ -24,4 +24,12 @@ body{
     background-color: black;
     border: none;
     color: white;
+  }
+
+  div{
+    width: 400px;
+    text-align: center;
+    border: 2px solid black;
+    margin-top: 5px;
+    background-color: rgb(160, 146, 146);
   }
