@@ -21,6 +21,7 @@ function newSearch(request, response) {
 
 
 function searchForBooks(request, response) {
+  // console.log(request.body);
   const userSearch = request.body.search[0];
   const typeOfSearch = request.body.search[1];
 
