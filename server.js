@@ -33,12 +33,8 @@ function searchForBooks(request, response) {
   }
 
   superagent.get(url)
-    .then(results => {
-      const bookArray = results.body.items.map(book => {
-        return new Book(book.volumeInfo);
-      });
-      response.status(200).render('pages/search/show');
-    })
+    .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
+    .then(results => response.render('pages/searches/show', {searchResults: results}));
 }
 
 function Book(bookObj) {
