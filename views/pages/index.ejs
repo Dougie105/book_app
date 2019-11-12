@@ -13,18 +13,21 @@
   <link rel="stylesheet" href="/styles/fonts/icomoon.woff">
 </head>
 <body>
-  <h1>Search for books:</h1>
+  <header>
+    <h1>Best Books!</h1>
+  </header>
+  <h2>Search by Title or Author</h1>
   <form action="/searches" method="post">
-    <input type="text" name="search" placeholder="Enter a book title">
+    <input type="text" name="search" placeholder="Enter a title or author">
     
-    <fieldset>
+    <fieldset class="title-author">
       <label for="title">
         <span>Title:</span>
         <input type="radio" name="search" value="title">
       </label>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="title-author">
       <label for="author">
         <span>Author:</span>
         <input type="radio" name="search" value="author">
