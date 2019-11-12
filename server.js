@@ -18,6 +18,8 @@ function newSearch(request, response) {
   response.render('pages/index');
 }
 
+
+
 function searchForBooks(request, response) {
   const userSearch = request.body.search[0];
   const typeOfSearch = request.body.search[1];
@@ -34,12 +36,18 @@ function searchForBooks(request, response) {
 
   superagent.get(url)
     .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
+    // .then(results => results.body.items.map(book => console.log(book.volumeInfo)))
     .then(results => response.render('pages/searches/show', {searchResults: results}));
+
+  console.log('line 41');
 }
 
+//Constructor Function
 function Book(bookObj) {
   const placeholderImage = 'http://placehold.it/300x300';
   this.title = bookObj.title || 'No book title found';
+  this.author = bookObj.author || 'No author';
+  this.description = bookObj.description || 'No description defined';
 }
 
 app.listen(PORT, () => {
