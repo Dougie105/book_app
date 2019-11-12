@@ -1,1 +1,15 @@
-display my search results here
+<!-- display my search results here -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book List</title>
+</head>
+<body>
+  <% bookObj.forEach( book => { %>
+    <p>Title: <%= bookObj.title %></p>
+    <p>Author: <%= bookObj.author %></p>
+    <p>Description: <%= bookObj.discription %></p>
+  });
+</body>
+</html>
