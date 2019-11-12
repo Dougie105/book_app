@@ -1,3 +1,27 @@
-body{
-  background: orange;
+html{
+  width: 600px;
 }
+
+body{
+    background-color: darkgrey;
+  }
+
+  title-author{
+    background-color: lightgray;
+  }
+
+  header{
+    color: white;
+    background-color: black;
+  }
+  
+  h2{
+    background-color: grey;
+    color: white;
+  }
+
+  button{
+    background-color: black;
+    border: none;
+    color: white;
+  }

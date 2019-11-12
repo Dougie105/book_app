@@ -43,7 +43,7 @@ function searchForBooks(request, response) {
 
 //Constructor Function
 function Book(bookObj) {
-  const placeholderImage = 'http://placehold.it/300x300';
+  this.placeholderImage = 'http://placehold.it/300x300';
   this.title = bookObj.title || 'No book title found';
   this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
