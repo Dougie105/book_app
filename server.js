@@ -22,10 +22,10 @@ app.get('/', newSearch);
 app.post('/searches', searchForBooks);
 
 // API routes
-app.get('/', getTasks) //get all tasks
-app.get('/tasks/:task_id', getOneTask); //get one task
-app.get('/add', showForm); // show form to add a task
-app.get('/add', addTask); // create a new task
+app.get('/', getBooks) //get all books
+app.get('/books/:book_id', getOneBook); //get one book
+app.get('/add', showForm); // show form to add a book
+app.get('/add', addBook); // create a new book
 
 function newSearch(request, response) {
   response.render('pages/index');
@@ -60,21 +60,21 @@ function Book(bookObj) {
   this.description = bookObj.description || 'No description defined';
 }
 
-function getTasks(req, res) {
-  let SQL = 'SELECT * FROM tasks;';
+function getBooks(req, res) {
+  let SQL = 'SELECT * FROM books;';
 
   return client.query(SQL)
     .then( results => res.render('index', {results: results.rows}))
     .catch( err => console.error(err));
 }
 
-function getOneTask(req, res){
-  let SQL = 'SELECT * FROM tasks WHERE id=$1;';
-  let values = [req.params.task_id];
+function getOneBook(req, res){
+  let SQL = 'SELECT * FROM books WHERE id=$1;';
+  let values = [req.params.book_id];
 
   return client.query(SQL, values)
     .then( result => {
-      return res.render('pages/detail-view', {task: result.rows[0] });
+      return res.render('pages/detail-view', {book: result.rows[0] });
     })
     .catch( err => console.error(err));
 }
@@ -83,9 +83,9 @@ function showForm(req, res){
   res.render('./pages/add-view');
 }
 
-function addTask(req, res){
+function addBook(req, res){
   let {title, description, category, contact, status} = req.body;
-  let SQL = 'INSERT into tasks(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
+  let SQL = 'INSERT into books(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let values = [title, description, category, contact, status];
 
   return client.query(SQL, values)
