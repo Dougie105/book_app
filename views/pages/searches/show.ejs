@@ -13,7 +13,7 @@
   <title>Book List</title>
 </head>
 <body>
-
+ <main>
   <% searchResults.forEach( book => { %>
     <div>
       <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
@@ -22,6 +22,6 @@
       <p>Description: <%= book.description %></p>
     </div>
     <% }); %>
-
+  </main>
 </body>
 </html>
