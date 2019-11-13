@@ -6,30 +6,32 @@
 </head>
 
 <body>
-  <header>
-    <%-include('../layout/header'); -%>
-  </header>
+  <main>
+    <header>
+      <%-include('../layout/header'); -%>
+    </header>
 
-  <h2>Search by Title or Author</h2>
-  <form action="/searches" method="post">
-    <input type="text" name="search" placeholder="Enter a title or author">
+    <h2>Search by Title or Author</h2>
+    <form action="/searches" method="post">
+      <input type="text" name="search" placeholder="Enter a title or author">
 
-    <fieldset class="title-author">
-      <label for="title">
-        <span>Title:</span>
-        <input type="radio" name="search" value="title">
-      </label>
-    </fieldset>
+      <fieldset class="title-author">
+        <label for="title">
+          <span>Title:</span>
+          <input type="radio" name="search" value="title">
+        </label>
+      </fieldset>
 
-    <fieldset class="title-author">
-      <label for="author">
-        <span>Author:</span>
-        <input type="radio" name="search" value="author">
-      </label>
-    </fieldset>
+      <fieldset class="title-author">
+        <label for="author">
+          <span>Author:</span>
+          <input type="radio" name="search" value="author">
+        </label>
+      </fieldset>
 
-    <button type="submit">Search for Google Books!</button>
-  </form>
+      <button type="submit">Search for Google Books!</button>
+    </form>
+  </main>
 </body>
 
 </html>
