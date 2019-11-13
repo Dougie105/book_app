@@ -2,46 +2,34 @@
 <html lang="en">
 
 <head>
-    <%-include('./layout/head'); -%>
+  <%-include('../layout/head'); -%>
 </head>
 
-  <body>
-    <header>
-      <%-include('./layout/header'); -%>
-    </header>
+<body>
+  <header>
+    <%-include('../layout/header'); -%>
+  </header>
 
-    <section class="book-view">
-      <ul>
-        <%- results.forEach(book => { %>
-        <li>
-          <h2> Book Name:<%= book.title %></h2>
-          <p> Author:<%= book.author %></p>
-          <a href="/books/<%= book.id %>">View Book Details</a>
-        </li>
-        <% }) %>
-      </ul>
-    </section>
+  <h2>Search by Title or Author</h2>
+  <form action="/searches" method="post">
+    <input type="text" name="search" placeholder="Enter a title or author">
 
-    <h2>Search by Title or Author</h2>
-    <form action="/searches" method="post">
-      <input type="text" name="search" placeholder="Enter a title or author">
+    <fieldset class="title-author">
+      <label for="title">
+        <span>Title:</span>
+        <input type="radio" name="search" value="title">
+      </label>
+    </fieldset>
 
-      <fieldset class="title-author">
-        <label for="title">
-          <span>Title:</span>
-          <input type="radio" name="search" value="title">
-        </label>
-      </fieldset>
+    <fieldset class="title-author">
+      <label for="author">
+        <span>Author:</span>
+        <input type="radio" name="search" value="author">
+      </label>
+    </fieldset>
 
-      <fieldset class="title-author">
-        <label for="author">
-          <span>Author:</span>
-          <input type="radio" name="search" value="author">
-        </label>
-      </fieldset>
-
-      <button type="submit">Search for Google Books!</button>
-    </form>
+    <button type="submit">Search for Google Books!</button>
+  </form>
 </body>
 
 </html>
