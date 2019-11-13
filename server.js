@@ -51,6 +51,7 @@ function searchForBooks(request, response) {
     .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
     .then(results => response.render('pages/searches/show', { searchResults: results }))
     .catch(results => response.render('pages/searches/error'));
+
 }
 
 //Constructor Function
@@ -59,7 +60,15 @@ function Book(bookObj) {
   this.title = bookObj.title || 'No book title found';
   this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
+  this.isbn = bookObj.isbn || 'No ISBN';
 }
+
+Book.prototype.writeToDB = function() {
+  const SQL = 'INSERT INTO books (title, author, description, image_url, isbn) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING RETURNING id;';
+  const values = [this.title, this.authors, this.description, this.image, this.isbn];
+  console.log('in writeToDB',this.title);
+  return client.query(SQL, values);
+};
 
 function getBooks(req, res) {
   let SQL = 'SELECT * FROM books;';
