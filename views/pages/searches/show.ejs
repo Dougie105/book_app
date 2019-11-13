@@ -6,18 +6,18 @@
 </head>
 
 <body>
- <main>
-  <header>
-    <%- include('../../layout/header'); -%>
-  </header>
-  <% searchResults.forEach( book => { %>
-  <div>
-    <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
-    <p><%= book.title %></p> <br>
-    <p><%= book.authors %></p> <br>
-    <p>Description: <%= book.description %></p>
-  </div>
-  <% }); %>
+  <main>
+    <header>
+      <%- include('../../layout/header'); -%>
+    </header>
+    <% searchResults.forEach( book => { %>
+    <div>
+      <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
+      <p><%= book.title %></p> <br>
+      <p><%= book.authors %></p> <br>
+      <p>Description: <%= book.description %></p>
+    </div>
+    <% }); %>
   </main>
 
 </body>
