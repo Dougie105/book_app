@@ -19,13 +19,14 @@ client.connect();
 client.on('error', err => console.error(err));
 
 app.get('/', newSearch);
-app.post('/searches', searchForBooks);
+// app.post('/searches', searchForBooks);
 
 // API routes
 app.get('/', getBooks) //get all books
 app.get('/books/:book_id', getOneBook); //get one book
 app.get('/add', showForm); // show form to add a book
 app.get('/add', addBook); // create a new book
+app.post('/', searchForBooks);
 
 function newSearch(request, response) {
   response.render('pages/index');
@@ -48,7 +49,7 @@ function searchForBooks(request, response) {
 
   superagent.get(url)
     .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
-    .then(results => response.render('pages/searches/show', {searchResults: results}))
+    .then(results => response.render('pages/searches/show', { searchResults: results }))
     .catch(results => response.render('pages/searches/error'));
 }
 
@@ -64,33 +65,34 @@ function getBooks(req, res) {
   let SQL = 'SELECT * FROM books;';
 
   return client.query(SQL)
-    .then( results => res.render('index', {results: results.rows}))
-    .catch( err => console.error(err));
+    .then(results => res.render('index', { results: results.rows }))
+    .catch(err => console.error(err));
 }
 
-function getOneBook(req, res){
+function getOneBook(req, res) {
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [req.params.book_id];
 
   return client.query(SQL, values)
-    .then( result => {
-      return res.render('pages/detail-view', {book: result.rows[0] });
+    .then(result => {
+      return res.render('pages/detail-view', { book: result.rows[0] });
     })
-    .catch( err => console.error(err));
+    .catch(err => console.error(err));
 }
 
-function showForm(req, res){
+function showForm(req, res) {
   res.render('./pages/add-view');
 }
 
-function addBook(req, res){
-  let {title, description, category, contact, status} = req.body;
+function addBook(req, res) {
+  let { title, description, category, contact, status } = req.body;
   let SQL = 'INSERT into books(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let values = [title, description, category, contact, status];
+  res.render('pages/index');
 
   return client.query(SQL, values)
     .then(res.redirect('/'))
-    .catch( err => console.error(err));
+    .catch(err => console.error(err));
 }
 
 app.listen(PORT, () => {
