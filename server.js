@@ -15,7 +15,7 @@ app.use(express.static('./public'));
 app.set('view engine', 'ejs');
 
 const client = new pg.Client(process.env.DATABASE_URL);
-// client.connect();
+client.connect();
 client.on('error', err => console.error(err));
 
 app.get('/', newSearch);
