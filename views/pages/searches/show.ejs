@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel="stylesheet" href="/styles/reset.css">
-    <link rel="stylesheet" href="/styles/base.css">
-    <link rel="stylesheet" href="/styles/icons.css">
-    <link rel="stylesheet" href="/styles/layout.css">
-    <link rel="stylesheet" href="/styles/modules.css">
-    <link rel="stylesheet" href="/styles/fonts/icomoon.eot">
-    <link rel="stylesheet" href="/styles/fonts/icomoon.svg">
-    <link rel="stylesheet" href="/styles/fonts/icomoon.ttf">
-    <link rel="stylesheet" href="/styles/fonts/icomoon.woff">
-  <title>Book List</title>
+  <%- include('../layout/head'); -%>
 </head>
+
 <body>
  <main>
+  <header>
+    <%- include('../layout/header'); -%>
+  </header>
   <% searchResults.forEach( book => { %>
-    <div>
-      <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
-      <p><%= book.title %></p> <br>
-      <p><%= book.authors %></p> <br>
-      <p>Description: <%= book.description %></p>
-    </div>
-    <% }); %>
+  <div>
+    <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
+    <p><%= book.title %></p> <br>
+    <p><%= book.authors %></p> <br>
+    <p>Description: <%= book.description %></p>
+  </div>
+  <% }); %>
   </main>
+
 </body>
+
 </html>
