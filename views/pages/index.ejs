@@ -1,40 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Book App</title>
-  <link rel="stylesheet" href="/styles/reset.css">
-  <link rel="stylesheet" href="/styles/base.css">
-  <link rel="stylesheet" href="/styles/icons.css">
-  <link rel="stylesheet" href="/styles/layout.css">
-  <link rel="stylesheet" href="/styles/modules.css">
-  <link rel="stylesheet" href="/styles/fonts/icomoon.eot">
-  <link rel="stylesheet" href="/styles/fonts/icomoon.svg">
-  <link rel="stylesheet" href="/styles/fonts/icomoon.ttf">
-  <link rel="stylesheet" href="/styles/fonts/icomoon.woff">
+    <%-include('./layout/head'); -%>
 </head>
-<body>
-  <header>
-    <h1>Best Books!</h1>
-  </header>
-  <h2>Search by Title or Author</h1>
-  <form action="/searches" method="post">
-    <input type="text" name="search" placeholder="Enter a title or author">
-    
-    <fieldset class="title-author">
-      <label for="title">
-        <span>Title:</span>
-        <input type="radio" name="search" value="title">
-      </label>
-    </fieldset>
 
-    <fieldset class="title-author">
-      <label for="author">
-        <span>Author:</span>
-        <input type="radio" name="search" value="author">
-      </label>
-    </fieldset>
+  <body>
+    <header>
+      <%-include('./layout/header'); -%>
+    </header>
 
-    <button type="submit">Search for Google Books!</button>
-  </form>
+    <section class="book-view">
+      <ul>
+        <%- results.forEach(book => { %>
+        <li>
+          <h2> Book Name:<%= book.title %></h2>
+          <p> Author:<%= book.author %></p>
+          <a href="/books/<%= book.id %>">View Book Details</a>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+    <h2>Search by Title or Author</h2>
+    <form action="/searches" method="post">
+      <input type="text" name="search" placeholder="Enter a title or author">
+
+      <fieldset class="title-author">
+        <label for="title">
+          <span>Title:</span>
+          <input type="radio" name="search" value="title">
+        </label>
+      </fieldset>
+
+      <fieldset class="title-author">
+        <label for="author">
+          <span>Author:</span>
+          <input type="radio" name="search" value="author">
+        </label>
+      </fieldset>
+
+      <button type="submit">Search for Google Books!</button>
+    </form>
 </body>
+
 </html>
