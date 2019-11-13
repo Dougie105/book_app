@@ -2,17 +2,17 @@
 <html>
 
 <head>
-  <%- include('../layout/head'); -%>
+  <%- include('../../layout/head') -%>
 </head>
 
 <body>
  <main>
   <header>
-    <%- include('../layout/header'); -%>
+    <%- include('../../layout/header') -%>
   </header>
   <% searchResults.forEach( book => { %>
   <div>
-    <img src="<%= book.placeholderImage%>" alt="Placeholder"> <br>
+    <img src= "<%= book.image %>" alt="Book Image"> <br>
     <p><%= book.title %></p> <br>
     <p><%= book.authors %></p> <br>
     <p>Description: <%= book.description %></p>

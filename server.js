@@ -54,7 +54,7 @@ function searchForBooks(request, response) {
 
 //Constructor Function
 function Book(bookObj) {
-  this.placeholderImage = 'http://placehold.it/300x300';
+  this.image = bookObj.imageLinks.thumbnail;
   this.title = bookObj.title || 'No book title found';
   this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
