@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/Dougie105/book_app/issues"
   },
-  "homepage": "https://github.com/Dougie105/book_app#readme"
+  "homepage": "https://github.com/Dougie105/book_app#readme",
+  "devDependencies": {
+    "prettier": "^1.19.1"
+  }
 }
