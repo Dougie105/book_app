@@ -23,7 +23,7 @@ app.get('/', newSearch);
 
 // API routes
 app.get('/', getBooks) //get all books
-app.get('/books/:book:id', updateBook); //get one book
+app.get('/books/:book_id', updateBook); //get one book
 app.get('/add', showForm); // show form to add a book
 app.get('/add', addBook); // create a new book
 app.post('/searches', searchForBooks);
@@ -77,6 +77,8 @@ function searchForBooks(request, response) {
 
 }
 
+let bookArr = [];
+
 //Constructor Function
 function Book(bookObj) {
   this.image = bookObj.imageLinks.thumbnail || 'http://placehold.it/300x300';
@@ -84,6 +86,7 @@ function Book(bookObj) {
   this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
   this.isbn = bookObj.isbn || 'No ISBN';
+  bookArr.push(this);
 }
 
 Book.prototype.writeToDB = function() {
