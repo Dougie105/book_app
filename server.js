@@ -23,14 +23,36 @@ app.get('/', newSearch);
 
 // API routes
 app.get('/', getBooks) //get all books
-app.get('/books/:book_id', getOneBook); //get one book
+app.get('/books/:book:id', updateBook); //get one book
 app.get('/add', showForm); // show form to add a book
 app.get('/add', addBook); // create a new book
 app.post('/', searchForBooks);
+app.post('/books', createBook);
+
 
 function newSearch(request, response) {
   response.render('pages/index');
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function createBook(req, res) {
+  let { title, description, category, contact, status } = req.body;
+  let SQL = 'INSERT INTO books ( title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
+  let safeValues = [title, description, category, contact, status];
+  client.query(SQL, safeValues)
+    .then(() => {
+      SQL = 'SELECT * FROM books WHERE isbn = $1;';
+      safeValues = [req.body.isbn]
+
+      client.query(SQL, safeValues)
+        .then((result => {
+          res.redirect('/books/${result.rows[0].id')
+        })
+        )
+    })
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function searchForBooks(request, response) {
   // console.log(request.body);
@@ -78,7 +100,7 @@ function getBooks(req, res) {
     .catch(err => console.error(err));
 }
 
-function getOneBook(req, res) {
+function updateBook(req, res) {
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [req.params.book_id];
 
