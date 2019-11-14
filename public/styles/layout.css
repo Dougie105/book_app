@@ -1,6 +1,7 @@
 header {
-    background-color: rgb(7, 7, 8);
+    background-color: #1a1a1a;
     height: 80px;
+    /* display: flex; */
 }
 h1 {
     margin: 10px;
@@ -15,19 +16,19 @@ form {
 }
 form.input {
     background: seashell;
-    width: 400px;
+    width: 60vw;
     height: 50px;
     margin: auto;
 }
 form.fieldset {
     background: seashell;
-    width: 400px;
+    width: 60vw;
     height: 50px;
     margin: auto;
 }
 form.button {
     background: seashell;
-    width: 400px;
+    width: 60vw;
     height: 50px;
     margin: auto;
 }
@@ -37,4 +38,5 @@ div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 5px 40px;
 }
