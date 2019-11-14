@@ -17,8 +17,11 @@
         <img src= "<%= book.image %>" alt="Book Image"> <br>
         <p><%= book.title %></p> <br>
         <p><%= book.authors %></p> <br>
-        <p>Description: <%= book.description %></p>
-        <button action="/add" type="submit">Select this Book!</button>
+        <p class="descrip"><b>Description:</b> <%= book.description %></p>
+        <!-- <p>ISBN: <%= book.isbn %></p> -->
+        <form action="/addbook" method="post">
+          <button action="/add/<% book.etag %>" type="submit">Select this Book!</button>
+        </form>
       </div>
     <% }); %>
   </main>
