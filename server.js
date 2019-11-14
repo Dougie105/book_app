@@ -25,7 +25,7 @@ app.get('/', newSearch);
 app.get('/', getBooks) //get all books
 app.get('/books/:book_id', updateBook); //get one book
 // app.get('/add', showForm); // show form to add a book
-app.get('/add', addBook); // create a new book
+app.get('/add/:etag', addBook); // create a new book
 app.post('/searches', searchForBooks);
 app.post('/books', createBook);
 
@@ -91,12 +91,12 @@ function Book(bookObj) {
   bookArr.push(this);
 }
 
-Book.prototype.writeToDB = function() {
-  const SQL = 'INSERT INTO books (title, author, description, image_url, isbn) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING RETURNING id;';
-  const values = [this.title, this.authors, this.description, this.image, this.isbn];
-  console.log('in writeToDB',this.title);
-  return client.query(SQL, values);
-};
+// Book.prototype.writeToDB = function() {
+//   const SQL = 'INSERT INTO books (title, author, description, image_url, isbn) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING RETURNING id;';
+//   const values = [this.title, this.authors, this.description, this.image, this.isbn];
+//   console.log('in writeToDB',this.title);
+//   return client.query(SQL, values);
+// };
 
 function getBooks(req, res) {
   let SQL = 'SELECT * FROM books;';
@@ -125,6 +125,7 @@ function addBook(req, res) {
   let { title, description, category, contact, status } = req.body;
   let SQL = 'INSERT into books(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let values = [title, description, category, contact, status];
+  console.log('in addBooks');
   res.render('pages/index');
 
   return client.query(SQL, values)
