@@ -24,7 +24,7 @@ app.get('/', newSearch);
 // API routes
 app.get('/', getBooks) //get all books
 app.get('/books/:book_id', updateBook); //get one book
-app.get('/add', showForm); // show form to add a book
+// app.get('/add', showForm); // show form to add a book
 app.get('/add', addBook); // create a new book
 app.post('/searches', searchForBooks);
 app.post('/books', createBook);
@@ -82,6 +82,7 @@ let bookArr = [];
 
 //Constructor Function
 function Book(bookObj) {
+  this.etag = bookObj.etag;
   this.image = bookObj.imageLinks.thumbnail || 'http://placehold.it/300x300';
   this.title = bookObj.title || 'No book title found';
   this.authors = bookObj.authors || 'No author';
