@@ -72,7 +72,7 @@ function searchForBooks(request, response) {
 
   superagent.get(url)
     .then(results => results.body.items.map(book => new Book(book.volumeInfo)))
-    .then(results => response.render('pages/searches/show', { searchResults: results }))
+    .then(bookArr => response.render('pages/searches/show', { searchResults: bookArr }))
     .catch(results => response.render('pages/searches/error'));
 
 }
