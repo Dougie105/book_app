@@ -26,7 +26,7 @@ app.get('/', getBooks) //get all books
 app.get('/books/:book:id', updateBook); //get one book
 app.get('/add', showForm); // show form to add a book
 app.get('/add', addBook); // create a new book
-app.post('/', searchForBooks);
+app.post('/searches', searchForBooks);
 app.post('/books', createBook);
 
 
@@ -40,6 +40,7 @@ function createBook(req, res) {
   let { title, description, category, contact, status } = req.body;
   let SQL = 'INSERT INTO books ( title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let safeValues = [title, description, category, contact, status];
+  console.log('in ucreateBooks');
   client.query(SQL, safeValues)
     .then(() => {
       SQL = 'SELECT * FROM books WHERE isbn = $1;';
@@ -58,7 +59,7 @@ function searchForBooks(request, response) {
   // console.log(request.body);
   const userSearch = request.body.search[0];
   const typeOfSearch = request.body.search[1];
-
+  console.log('in searchForBooks');
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 
   if (typeOfSearch === 'title') {
@@ -94,7 +95,7 @@ Book.prototype.writeToDB = function() {
 
 function getBooks(req, res) {
   let SQL = 'SELECT * FROM books;';
-
+  console.log('in getBooks');
   return client.query(SQL)
     .then(results => res.render('index', { results: results.rows }))
     .catch(err => console.error(err));
@@ -103,7 +104,7 @@ function getBooks(req, res) {
 function updateBook(req, res) {
   let SQL = 'SELECT * FROM books WHERE id=$1;';
   let values = [req.params.book_id];
-
+  console.log('in updateBooks');
   return client.query(SQL, values)
     .then(result => {
       return res.render('pages/detail-view', { book: result.rows[0] });
