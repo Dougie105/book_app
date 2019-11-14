@@ -102,6 +102,7 @@ function addBook(req, res) {
   let { title, description, category, contact, status } = req.body;
   let SQL = 'INSERT into books(title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let values = [title, description, category, contact, status];
+  console.log('in addBooks');
   res.render('pages/index');
 
   return client.query(SQL, values)
