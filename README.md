@@ -1,9 +1,10 @@
-# book_app
+# book_app 
 
 **Author**: Terrell and Kevin
-**Version**: 1.0.0 
+**Version**: 3.0.0 
 
 ## Overview
+LAB 13 Resource Update and Delete
 <!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for a Code 301 class. (i.e. What's your problem domain?) -->
 
 ## Getting Started
@@ -21,12 +22,32 @@
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
 
 
-Number and name of feature: ________________________________
+Number and name of feature: ______LAB 11__________________________
 
 Estimate of time needed to complete: _____
 
 Start time: _9:05_
 
 Finish time: _1:10_
+
+Actual time needed to complete: _____
+
+Number and name of feature: ______LAB 12__________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _9:05_
+
+Finish time: _1:40_
+
+Actual time needed to complete: _____
+
+Number and name of feature: ______LAB 13__________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _ _
+
+Finish time: _ _
 
 Actual time needed to complete: _____
