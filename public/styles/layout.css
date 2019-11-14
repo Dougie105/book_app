@@ -4,7 +4,6 @@ header {
 }
 h1 {
     margin: 10px;
-    /* justify-content: center; */
 }
 /* index.ejs styling */
 form {
@@ -15,16 +14,19 @@ form {
     border: seashell;
 }
 form.input {
+    background: seashell;
     width: 400px;
     height: 50px;
     margin: auto;
 }
 form.fieldset {
+    background: seashell;
     width: 400px;
     height: 50px;
     margin: auto;
 }
 form.button {
+    background: seashell;
     width: 400px;
     height: 50px;
     margin: auto;

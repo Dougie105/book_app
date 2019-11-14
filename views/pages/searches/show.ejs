@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
   <%- include('../../layout/head') -%>
 </head>
 
@@ -10,15 +11,16 @@
   <header>
     <%- include('../../layout/header') -%>
   </header>
-  <% searchResults.forEach( book => { %>
-  <div>
-    <img src= "<%= book.image %>" alt="Book Image"> <br>
-    <p><%= book.title %></p> <br>
-    <p><%= book.authors %></p> <br>
-    <p>Description: <%= book.description %></p>
-    <button action="POST" type="submit">Select this Book!</button>
-  </div>
-  <% }); %>
+    <h3> Total number of Books in search: <%= searchResults.length %> </h3>
+    <% searchResults.forEach( book => { %>
+      <div>
+        <img src= "<%= book.image %>" alt="Book Image"> <br>
+        <p><%= book.title %></p> <br>
+        <p><%= book.authors %></p> <br>
+        <p>Description: <%= book.description %></p>
+        <button action="/add" type="submit">Select this Book!</button>
+      </div>
+    <% }); %>
   </main>
 
 </body>
