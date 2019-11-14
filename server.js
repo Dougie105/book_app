@@ -40,7 +40,7 @@ function createBook(req, res) {
   let { title, description, category, contact, status } = req.body;
   let SQL = 'INSERT INTO books ( title, description, category, contact, status) VALUES ($1, $2, $3, $4, $5);';
   let safeValues = [title, description, category, contact, status];
-  console.log('in ucreateBooks');
+  console.log('in createBooks');
   client.query(SQL, safeValues)
     .then(() => {
       SQL = 'SELECT * FROM books WHERE isbn = $1;';
@@ -60,6 +60,7 @@ function searchForBooks(request, response) {
   const userSearch = request.body.search[0];
   const typeOfSearch = request.body.search[1];
   console.log('in searchForBooks');
+  // https://www.googleapis.com/books/v1/volumes?q=moby+intitle:title
   let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 
   if (typeOfSearch === 'title') {
@@ -85,7 +86,7 @@ function Book(bookObj) {
   this.title = bookObj.title || 'No book title found';
   this.authors = bookObj.authors || 'No author';
   this.description = bookObj.description || 'No description defined';
-  this.isbn = bookObj.isbn || 'No ISBN';
+  this.isbn = bookObj.industryIdentifiers[0].identifier|| 'No ISBN';
   bookArr.push(this);
 }
 
